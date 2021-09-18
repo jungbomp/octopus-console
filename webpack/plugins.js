@@ -4,6 +4,7 @@ const { HotModuleReplacementPlugin } = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const { DIRECTORIES } = require('./constants');
 
@@ -29,10 +30,13 @@ const ESLINT = new ESLintPlugin({
   extensions: ['js', 'jsx', 'ts', 'tsx'],
 });
 
+const MINI_CSS_EXTRACT = new MiniCssExtractPlugin();
+
 module.exports = {
   DOTENV,
   HTML_WEBPACK,
   CLEAN_WEBPACK,
   HOT_MODULE_REPLACEMENT,
   ESLINT,
+  MINI_CSS_EXTRACT,
 };
