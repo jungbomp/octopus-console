@@ -1,0 +1,105 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true,
+    "es2020": true
+  },
+  "parser": "@typescript-eslint/parser",  // Specifies the ESLint parser
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true // Allows for the parsing of JSX
+    },
+    "ecmaVersion": 11,  // Allows for the parsing of modern ECMAScript features
+    "sourceType": "module"  // Allows for the use of imports
+  },
+  "plugins": ["react", "@typescript-eslint", "prettier", "@babel"],
+  "extends": [
+    "airbnb",
+    "plugin:react/recommended",
+    "plugin:import/typescript",
+    "plugin:prettier/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "no-tabs": "off",
+    "react/jsx-indent": [2, 2, { "indentLogicalExpressions": true }],
+    "react/jsx-indent-props": [2, "first"],
+    "react/jsx-boolean-value": ["error", "always"],
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "react/jsx-uses-react": "error",
+    "react/prop-types": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "no-useless-concat": "error",
+    "prefer-template": "error",
+    "no-unused-expressions": ["error", { "allowTernary": true }],
+    "chai-friendly/no-unused-expressions": "off",
+    "@babel/no-unused-expressions": ["error", { "allowTernary": true }],
+    "linebreak-style": "off",
+    "import/prefer-default-export": "off",
+    "import/extensions": "off",
+    "import/no-unresolved": ["error", { "caseSensitive": false }],
+    "no-unused-vars": "off", // The base rule must be disabled as it can report incorrect errors when activated together with the extended ts rule
+    "@typescript-eslint/no-unused-vars": "error", // It adds support for TypeScript features, such as types
+    "no-use-before-define": "off", // note you must disable the base rule as it can report incorrect errors
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error", { "ignoreTypeValueShadow": true }]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts*"],
+      "rules": {
+        "no-undef": "off"
+      }
+    },
+    {
+      "files": ["**/*.spec.js"],
+      "rules": {
+        "no-return-assign": "off"
+      }
+    },
+    {
+      "files": ["webpack/**/*", "scripts/**/*"],
+      "rules": {
+        "import/no-extraneous-dependencies": "off",
+        "no-console": "off",
+        "no-restricted-syntax": "off"
+      }
+    },
+    {
+      "files": ["e2eTests/**/*"],
+      "rules": {
+        "import/no-extraneous-dependencies": "off",
+        "import/no-unresolved": "off",
+        "no-param-reassign": "off"
+      }
+    },
+    {
+      "files": ["*.test.*s", "*.spec.*s"],
+      "rules": {
+        "chai-friendly/no-unused-expressions": "error"
+      }
+    }
+  ],
+  "settings": {
+    "node": {
+      "extensions": [".js", ".jsx", ".ts", ".tsx"],
+      "moduleDirectory": ["node_modules", "src/"]
+    },
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["src", "./src"]
+        ],
+        "extensions": [".ts", ".js", ".jsx", ".tsx", ".json"]
+      },
+      "babel-module": {},
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "moduleDirectory": ["node_modules", "src/"]
+      }
+    }
+  },
+  "ignorePatterns": ["typings/**/*.d.ts"]
+}
