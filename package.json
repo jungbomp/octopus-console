@@ -13,6 +13,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "lint-staged": {
+    "src/**/*.?s*": [
+      "prettier --write",
+      "npm run eslint"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@babel/eslint-plugin": "^7.14.5",

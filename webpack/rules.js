@@ -1,3 +1,5 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 const SOURCE_MAP_LOADER = {
   enforce: 'pre',
   test: /\.((js)|(ts))|x?$/,
@@ -17,10 +19,10 @@ const BABEL_LOADER = {
   use: ['babel-loader'],
 };
 
-const STYLE_LOADER = {
+const STYLE_LOADER = (mode) => ({
   test: /\.(sa|sc|c)ss$/,
   use: [
-    'style-loader',
+    mode === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
     {
       loader: 'css-loader',
       options: {
@@ -31,7 +33,7 @@ const STYLE_LOADER = {
     },
     'sass-loader',
   ],
-};
+});
 
 const HTML_LOADER = {
   test: /\.html$/,
@@ -63,4 +65,12 @@ const MJS = {
   },
 };
 
-module.exports = [SOURCE_MAP_LOADER, BABEL_LOADER, TYPESCRIPT_LOADER, STYLE_LOADER, URL_LOADER, HTML_LOADER, MJS];
+module.exports = {
+  SOURCE_MAP_LOADER,
+  BABEL_LOADER,
+  TYPESCRIPT_LOADER,
+  STYLE_LOADER,
+  URL_LOADER,
+  HTML_LOADER,
+  MJS,
+};

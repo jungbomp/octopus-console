@@ -6,8 +6,8 @@ const RULES = require('./rules');
 const PLUGINS = require('./plugins');
 
 module.exports = (envObj, args) => {
-  const env = intersection(Object.values(ENV), Object.keys(envObj))[0];
-
+  const [env] = intersection(Object.values(ENV), Object.keys(envObj));
+  const { mode } = args;
   return {
     entry: {
       index: path.resolve(DIRECTORIES.SRC, 'index.ts'),
@@ -20,7 +20,15 @@ module.exports = (envObj, args) => {
       publicPath: '/',
     },
     module: {
-      rules: [...RULES],
+      rules: [
+        RULES.SOURCE_MAP_LOADER,
+        RULES.BABEL_LOADER,
+        RULES.TYPESCRIPT_LOADER,
+        RULES.STYLE_LOADER(mode),
+        RULES.URL_LOADER,
+        RULES.HTML_LOADER,
+        RULES.MJS,
+      ],
     },
     resolve: {
       extensions: ['.js', '.jsx', '.json', '.ts', '.tsx', '.scss', '.css'],
@@ -34,11 +42,13 @@ module.exports = (envObj, args) => {
       // Create an index.html in build folder
       PLUGINS.HTML_WEBPACK(env, args.env),
       PLUGINS.ESLINT,
+      ...(mode === 'development' ? [] : [PLUGINS.MINI_CSS_EXTRACT]),
     ],
     devServer: {
       static: path.resolve(DIRECTORIES.ROOT, 'dist'),
       port: APP_PORT,
       historyApiFallback: true,
+      hot: true,
     },
   };
 };
