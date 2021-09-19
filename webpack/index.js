@@ -1,6 +1,7 @@
 const path = require('path');
 const { intersection } = require('lodash');
 
+const ALIAS = require('./alias');
 const { APP_PORT, DIRECTORIES, ENV } = require('./constants');
 const RULES = require('./rules');
 const PLUGINS = require('./plugins');
@@ -32,6 +33,9 @@ module.exports = (envObj, args) => {
     },
     resolve: {
       extensions: ['.js', '.jsx', '.json', '.ts', '.tsx', '.scss', '.css'],
+      alias: {
+        ...ALIAS,
+      },
     },
     plugins: [
       PLUGINS.DOTENV(env),
