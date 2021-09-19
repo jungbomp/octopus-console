@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development --env local",
-    "start": "webpack serve --mode development --env local",
+    "start": "webpack serve --mode development --env local --open",
     "prettier": "prettier --write ./src/ ./webpack/",
     "eslint": "eslint --ext .jsx,.js,.ts,.tsx ./src/ ./webpack/ --cache",
-    "eslint:fix": "npm run eslint -- --fix"
+    "eslint:fix": "npm run eslint -- --fix",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -33,7 +34,6 @@
     "@typescript-eslint/parser": "^4.31.1",
     "babel-loader": "^8.2.2",
     "babel-plugin-module-resolver": "^4.1.0",
-    "classnames": "^2.3.1",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.2.0",
     "dotenv-webpack": "^7.0.3",
@@ -64,6 +64,11 @@
     "webpack-dev-server": "^4.2.1"
   },
   "dependencies": {
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@mui/icons-material": "^5.0.0",
+    "@mui/material": "^5.0.0",
+    "classnames": "^2.3.1",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
