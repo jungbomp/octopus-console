@@ -67,7 +67,6 @@ const SalesBySku: React.FC<SalesBySkuProps> = ({ className, maxDateRange = DEFAU
       isValid(endDate) &&
       differenceInCalendarDays(endDate, startDate) > maxDateRange
     ) {
-      console.log('setNull');
       setDateRange([startDate, null]);
       return;
     }
