@@ -1,6 +1,6 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import Sample from './components/Sample/Sample';
+import SalesBySku from './components/SalesBySku/SalesBySku';
 
-ReactDOM.render(<Sample />, document.getElementById('root'));
+ReactDOM.render(<SalesBySku />, document.getElementById('root'));

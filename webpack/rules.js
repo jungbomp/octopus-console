@@ -44,18 +44,17 @@ const HTML_LOADER = {
   ],
 };
 
-const URL_LOADER = {
+const IMAGE_LOADER = {
   test: /\.(png|jpg|svg|ico|jp(e*)g|gif)$/i,
-  use: [
-    {
-      loader: 'url-loader',
-      options: {
-        limit: 10000, // Convert images < 10kb to base64 string
-        name: 'images/[hash]-[name].[ext]',
-        fallback: 'file-loader',
-      },
+  type: 'asset/resource',
+  parser: {
+    dataUrlCondition: {
+      maxSize: 10 * 1024, // 10kb
     },
-  ],
+  },
+  generator: {
+    filename: 'assets/images/[hash]-[name][ext]',
+  },
 };
 
 const MJS = {
@@ -70,7 +69,7 @@ module.exports = {
   BABEL_LOADER,
   TYPESCRIPT_LOADER,
   STYLE_LOADER,
-  URL_LOADER,
+  IMAGE_LOADER,
   HTML_LOADER,
   MJS,
 };

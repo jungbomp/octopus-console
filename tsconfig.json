@@ -5,6 +5,8 @@
     "outDir": "./dist",
     "paths": {
       "src/*": ["./*"],
+      "public/*": ["../public/*"],
+      "images/*": ["../public/assets/images/*"],
     },
     "sourceMap": true,
     "noImplicitAny": true,

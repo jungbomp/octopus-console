@@ -14,6 +14,9 @@ module.exports = (envObj, args) => {
       index: path.resolve(DIRECTORIES.SRC, 'index.ts'),
     },
     devtool: 'inline-source-map',
+    experiments: {
+      asset: true,
+    },
     output: {
       clean: true,
       path: path.resolve(DIRECTORIES.ROOT, 'dist'),
@@ -22,11 +25,11 @@ module.exports = (envObj, args) => {
     },
     module: {
       rules: [
-        RULES.SOURCE_MAP_LOADER,
+        // RULES.SOURCE_MAP_LOADER,
         RULES.BABEL_LOADER,
         RULES.TYPESCRIPT_LOADER,
         RULES.STYLE_LOADER(mode),
-        RULES.URL_LOADER,
+        RULES.IMAGE_LOADER,
         RULES.HTML_LOADER,
         RULES.MJS,
       ],
@@ -34,7 +37,9 @@ module.exports = (envObj, args) => {
     resolve: {
       extensions: ['.js', '.jsx', '.json', '.ts', '.tsx', '.scss', '.css'],
       alias: {
-        ...ALIAS,
+        ...ALIAS.SRC,
+        ...ALIAS.PUBLIC,
+        ...ALIAS.IMAGES,
       },
     },
     plugins: [
@@ -49,10 +54,14 @@ module.exports = (envObj, args) => {
       ...(mode === 'development' ? [] : [PLUGINS.MINI_CSS_EXTRACT]),
     ],
     devServer: {
-      static: path.resolve(DIRECTORIES.ROOT, 'dist'),
+      static: {
+        directory: path.resolve('public/assets'),
+        publicPath: '/assets',
+      },
       port: APP_PORT,
       historyApiFallback: true,
       hot: true,
+      allowedHosts: 'all',
     },
   };
 };
