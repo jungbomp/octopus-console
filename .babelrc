@@ -13,7 +13,8 @@
         ["module-resolver", {
           "root": ["./src"],
           "alias": {
-            "src": "./src"
+            "src": "./src",
+            "images": "./public/assets/images"
           }
         }]
       ]

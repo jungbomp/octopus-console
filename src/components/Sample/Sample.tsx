@@ -17,7 +17,7 @@ const Sample: React.FC = () => {
   };
 
   return (
-    <button type="submit" onClick={onClick} className={styles.button}>
+    <button type='submit' onClick={onClick} className={styles.button}>
       {state}
     </button>
   );

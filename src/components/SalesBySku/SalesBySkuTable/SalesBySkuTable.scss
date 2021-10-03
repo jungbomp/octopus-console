@@ -1,0 +1,21 @@
+.salesBySkuTable {
+  .headerRow {
+    background-color: #F5F6F8;
+
+    &CellBorder:not(:last-child) {
+      border-right: 1px solid #E0E0E0;
+    }
+
+    &Cell {
+      text-align: center;
+      
+      .SubTitle {
+        color: #ABAEB3;
+      }
+    }
+  }
+
+  .bodyRow {
+    background-color: #F5F6F8;
+  }
+}
