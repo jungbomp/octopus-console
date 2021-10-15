@@ -1,6 +1,7 @@
-import { SalesBySkuRecord } from '../SalesBySku.types';
+import type { CommonProps } from 'src/components/types';
 
-export interface SalesByskuTableProps {
-  className?: string;
+import type { SalesBySkuRecord } from '../SalesBySku.types';
+
+export interface SalesByskuTableProps extends CommonProps {
   data: SalesBySkuRecord[];
 }

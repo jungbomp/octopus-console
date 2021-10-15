@@ -24,7 +24,7 @@ import logo from 'images/logo.jpg';
 import Search from 'src/components/Search';
 import { getSalesBySku } from 'src/services/orders.service';
 
-import SalesBySkuTable from './SalesBySkuTable/SalesBySkuTable';
+import SalesBySkuTable from './SalesBySkuTable';
 
 import {
   DEFAULT_MAX_DATE_RANGE,

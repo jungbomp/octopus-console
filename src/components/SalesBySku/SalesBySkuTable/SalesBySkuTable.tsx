@@ -12,8 +12,8 @@ import TableRow from '@mui/material/TableRow';
 
 import type { SalesBySkuRecord } from '../SalesBySku.types';
 
-import SalesBySkuTableHeaderCell from './SalesBySkuTableHeaderCell/SalesBySkuTableHeaderCell';
-import SalesBySkuTableRow from './SalesBySkuTableRow/SalesBySkuTableRow';
+import SalesBySkuTableHeaderCell from './SalesBySkuTableHeaderCell';
+import SalesBySkuTableRow from './SalesBySkuTableRow';
 
 import { COLUMNS, DEFAULT_ROWS_PER_PAGE, INITIAL_SELECTED_PAGE, ROWS_PER_PAGES } from './SalesBySkuTable.constants';
 import type { SalesByskuTableProps } from './SalesBySkuTable.types';
