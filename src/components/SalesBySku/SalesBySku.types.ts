@@ -1,3 +1,5 @@
+import type { CommonProps } from '../types';
+
 export interface SalesBySkuRecord {
   orderDate: string;
   productCode: string;
@@ -15,7 +17,6 @@ export interface SalesBySkuRecord {
   mxWalmartQuantity: number;
 }
 
-export interface SalesBySkuProps {
-  className?: string;
+export interface SalesBySkuProps extends CommonProps {
   maxDateRange?: number;
 }

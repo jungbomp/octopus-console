@@ -1,0 +1,23 @@
+@import '../common';
+
+.sideMenu {
+  [class*='paper'] {
+    white-space: nowrap;
+    width: $side-menu-width;
+    transition: $width-transition;
+    box-sizing: border-box;
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+.closed {
+  [class*='paper'] {
+    width: $side-menu-close-width;
+    overflow-x: hidden;
+    z-index: $side-menu-close-zIndex;
+  }
+}

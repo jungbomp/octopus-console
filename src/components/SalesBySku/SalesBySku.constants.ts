@@ -1,3 +1,7 @@
+export const SALES_BY_SKU_PATH_ID = 'SALES_BY_SKU';
+export const SALES_BY_SKU_PATH_PREFIX = 'sales-by-sku';
+export const SALES_BY_SKU_TITLE = 'Sales By SKU';
+
 export enum OrderBy {
   DEFAULT = 'DEFAULT',
   TOTAL_QUANTITY = 'TOTAL_QUANTITY',

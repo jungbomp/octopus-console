@@ -1,0 +1,24 @@
+@import './common';
+
+.layout {
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    height: $header-height;
+  }
+
+  .main {
+    transition: $width-transition;
+    margin: {
+      top: $header-height;
+      left: $side-menu-close-width;
+    } 
+  }
+
+  .mainOpenMenu {
+    margin: {
+      left: $side-menu-width;
+    }
+  }
+}
