@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "webpack --mode development --env local",
     "build": "webpack --mode production --env production",
+    "build:preview": "webpack --mode production --env preview",
     "start": "webpack serve --mode development --env local --open",
     "start:preview": "webpack serve --mode development --env preview --open",
     "prettier": "prettier --write ./src/ ./webpack/",

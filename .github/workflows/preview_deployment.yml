@@ -15,6 +15,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
+      
+      - name: Create env file
+        run: |
+          touch .env.preview
+          echo "${{ secrets.ENV_PREVIEW }}" > .env.preview
 
       - name: Build
         run: |
