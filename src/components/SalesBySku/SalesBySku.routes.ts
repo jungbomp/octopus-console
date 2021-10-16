@@ -8,17 +8,9 @@ const SalesBySku = lazy(() => import('./SalesBySku'));
 
 const saleBySkuMenuItems: MenuItemContext[] = [
   {
-    pathId: `${SALES_BY_SKU_PATH_ID}_1`,
+    pathId: SALES_BY_SKU_PATH_ID,
     title: SALES_BY_SKU_TITLE,
     path: `/${SALES_BY_SKU_PATH_PREFIX}`,
-    icon: AssessmentIcon,
-    component: SalesBySku,
-    exact: true,
-  },
-  {
-    pathId: `${SALES_BY_SKU_PATH_ID}_2`,
-    title: `${SALES_BY_SKU_TITLE}_2`,
-    path: `/${SALES_BY_SKU_PATH_PREFIX}/sub`,
     icon: AssessmentIcon,
     component: SalesBySku,
     exact: true,
