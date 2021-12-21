@@ -4,11 +4,12 @@ import { Direction, OrderBy } from './SalesBySku.constants';
 import type { SalesBySkuRecord } from './SalesBySku.types';
 
 export const toOrderDateFormat = (date: Date): string => format(date, 'yyyyMMdd');
+export const parseDate = (date: string): Date => parse(date, 'yyyyMMdd', new Date());
 
 export const formatNumber = (number: number): string => new Intl.NumberFormat().format(number);
 
 export const compareSalesBySkuRecordsByOrderDate = (lhs: SalesBySkuRecord, rhs: SalesBySkuRecord): number =>
-  compareDesc(parse(lhs.orderDate, 'yyyyMMdd', new Date()), parse(rhs.orderDate, 'yyyyMMdd', new Date()));
+  compareDesc(parseDate(lhs.orderDate), parseDate(rhs.orderDate));
 
 export const compareSalesBySkuRecordsByStdSku = (lhs: SalesBySkuRecord, rhs: SalesBySkuRecord): number =>
   lhs.stdSku.localeCompare(rhs.stdSku);
