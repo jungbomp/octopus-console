@@ -35,7 +35,7 @@ import {
   CsvExportHeaders,
 } from './SalesBySku.constants';
 import type { SalesBySkuProps, SalesBySkuRecord } from './SalesBySku.types';
-import { filterByStdSku, formatNumber, sortSalesBySkuRecords, toOrderDateFormat } from './SalesBySku.utils';
+import { filterByStdSku, formatNumber, parseDate, sortSalesBySkuRecords, toOrderDateFormat } from './SalesBySku.utils';
 
 import styles from './SalesBySku.scss';
 
@@ -52,6 +52,7 @@ const SalesBySku: React.FC<SalesBySkuProps> = ({ className, maxDateRange = DEFAU
   const [direction, setDirection] = useState<Direction>(DEFAULT_DIRECTION);
   const [salesBySkuData, setSalesBySkuData] = useState<SalesBySkuRecord[]>([]);
   const [filteredSalesBySkuData, setFilteredSalesBySkuData] = useState<SalesBySkuRecord[]>(salesBySkuData);
+  const [salesBySkuExportData, setSalesBySkuExportData] = useState<SalesBySkuRecord[]>([]);
   const [totalQuantity, setTotalQuantity] = useState<number>(0);
   const [showBackdrop, setShowBackdrop] = useState<boolean>(false);
   const [searchText, setSearchText] = useState<string>('');
@@ -103,6 +104,15 @@ const SalesBySku: React.FC<SalesBySkuProps> = ({ className, maxDateRange = DEFAU
 
     setExportFileName(`SalesBySku.${fromDttm}-${toDttm}.${format(new Date(Date.now()), 'yyyyMMddHHmmss')}.csv`);
   }, [dateRange, salesBySkuData]);
+
+  useEffect(() => {
+    setSalesBySkuExportData(
+      salesBySkuData.map((salesBySku: SalesBySkuRecord) => ({
+        ...salesBySku,
+        orderDate: format(parseDate(salesBySku.orderDate), 'yyyy-MM-dd'),
+      })),
+    );
+  }, [salesBySkuData]);
 
   useEffect(() => {
     setSalesBySkuData(sortSalesBySkuRecords(salesBySkuData, orderBy, direction));
@@ -203,7 +213,7 @@ const SalesBySku: React.FC<SalesBySkuProps> = ({ className, maxDateRange = DEFAU
                 target='_blank'
                 className={Classnames(styles.csvLink)}
                 headers={CsvExportHeaders}
-                data={salesBySkuData}
+                data={salesBySkuExportData}
               >
                 <Button variant='contained'>Download</Button>
               </CSVLink>
